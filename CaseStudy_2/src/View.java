@@ -9,14 +9,12 @@ public class View {
         StudentMark studentMark = new StudentMark();
         MenuService menuService = new MenuService();
         List<StudentMark> studentMarkInstance = new ArrayList<>();
-        MenuService.IOFile ioFile = new MenuService.IOFile();
+        IO io = new IO();
+        String filePath;
+        studentMarkInstance = io.readFile();
         int ID = 0;
 
-        try{
-            studentMarkInstance = ioFile.readFile();
-        } catch (NullPointerException ignored){
 
-        }
 
 
 
@@ -164,10 +162,7 @@ public class View {
 
                                 break;
 
-                            default:
 
-                                System.out.println("Invalid option !!! ");
-                                break;
                         }
 
                         break;
@@ -186,13 +181,10 @@ public class View {
 
 
                 case "0":
-                    ioFile.writeFile(studentMarkInstance);
+                    System.out.println("In put file path to save: ");
+                    filePath = scanner.nextLine();
+                    io.writeFile(studentMarkInstance);
                     break;
-
-
-                default:
-                    System.out.println("Invalid option !!! ");
-
 
             }
         }
